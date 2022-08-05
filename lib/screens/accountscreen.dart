@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:newflutter/screens/editaccount.dart';
 import 'package:newflutter/util/string.dart';
 
 import '../util/helper.dart';
@@ -56,9 +57,18 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                 ),
                 Spacer(),
-                Text('Edit',
-                    style: Helper.textStylePrimary(
-                        18, FontWeight.bold, Colors.blue))
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const EditAccount()),
+                    );
+                  },
+                  child: Text('Edit',
+                      style: Helper.textStylePrimary(
+                          18, FontWeight.bold, Colors.blue)),
+                )
               ],
             ),
             SizedBox(

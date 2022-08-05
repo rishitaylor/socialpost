@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:newflutter/screens/accountscreen.dart';
 import 'package:newflutter/screens/notifiction.dart';
+
 import 'package:newflutter/util/helper.dart';
 import 'package:newflutter/util/string.dart';
 
@@ -18,6 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   // The search area here
+      //   title:
+      // ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -65,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       child: CircleAvatar(
-                        child: Image.asset('assets/Splash.png'),
+                        child: Image.asset('assets/profile.png'),
                       ),
                     )
                   ],
@@ -83,8 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     // color: const Color(0xff7c94b6),
                     image: const DecorationImage(
-                      image: NetworkImage(
-                          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg'),
+                      image: AssetImage('assets/Banner.png'),
                       fit: BoxFit.cover,
                     ),
                     border: Border.all(
@@ -232,8 +236,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: 5,
                     itemBuilder: (context, position) {
                       return Card(
-                          child: Image.network(
-                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZlf5lc5tX-0gY-y94pGS0mQdL-D0lCH2OQ&usqp=CAU',
+                          child: Image.asset(
+                        'assets/ImgBox.png',
                         width: 75,
                         fit: BoxFit.cover,
                       ));
