@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:newflutter/screens/downloadscreen.dart';
 import 'package:newflutter/util/string.dart';
 
 import '../util/helper.dart';
@@ -25,13 +26,19 @@ class _EditScreenState extends State<EditScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.arrow_back_sharp),
-                  Image.network(
-                    'https://images.news18.com/ibnlive/uploads/2021/08/national-flag.jpg',
-                    height: 320,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Image.asset(
+                    'assets/Republic.png',
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Text(AppString.like,
                       style: Helper.textStylePrimary(
-                          20.5, FontWeight.bold, Colors.black)),
+                          22, FontWeight.bold, Colors.black)),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Save design or edit details below',
@@ -53,7 +60,7 @@ class _EditScreenState extends State<EditScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5)),
                           // backgroundColor: Color(AppColors.primaryColor),
-                          backgroundColor: Colors.blueGrey,
+                          backgroundColor: Colors.blueGrey[50],
                           fixedSize: const Size(double.maxFinite, 50),
                         ),
                         onPressed: () {},
@@ -63,8 +70,8 @@ class _EditScreenState extends State<EditScreen> {
                             Icon(Icons.edit_off),
                             Text(
                               'Edit Business Details',
-                              style: GoogleFonts.montserrat(
-                                color: Colors.white,
+                              style: GoogleFonts.poppins(
+                                color: Colors.blue,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
                               ),
@@ -84,10 +91,88 @@ class _EditScreenState extends State<EditScreen> {
                         backgroundColor: Colors.blueAccent,
                         fixedSize: const Size(double.maxFinite, 50),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: 250,
+                              color: Colors.white,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 15, vertical: 25),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const DownloadScreen()),
+                                        );
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            AppString.png,
+                                            style: Helper.textStylePrimary(16,
+                                                FontWeight.bold, Colors.black),
+                                          ),
+                                          Text(
+                                            'High quality image',
+                                            style: Helper.textStylePrimary(16,
+                                                FontWeight.normal, Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Text(
+                                      AppString.jpg,
+                                      style: Helper.textStylePrimary(
+                                          16, FontWeight.bold, Colors.black),
+                                    ),
+                                    Text(
+                                      'Small quality image',
+                                      style: Helper.textStylePrimary(
+                                          16, FontWeight.normal, Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Text(
+                                      AppString.pdf,
+                                      style: Helper.textStylePrimary(
+                                          16, FontWeight.bold, Colors.black),
+                                    ),
+                                    Text(
+                                      'Print Quality Document Format',
+                                      style: Helper.textStylePrimary(
+                                          16, FontWeight.normal, Colors.grey),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    // ElevatedButton(
+                                    //   child: const Text('Close BottomSheet'),
+                                    //   onPressed: () => Navigator.pop(context),
+                                    // )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                       child: Text(
                         'Save Image As..',
-                        style: GoogleFonts.montserrat(
+                        style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 16,
